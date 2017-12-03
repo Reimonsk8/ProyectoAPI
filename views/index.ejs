@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+
+<html lang="es" ng-app="databaseApp">
+  <head>
+    <title><%= title %></title>
+    	<link rel='stylesheet' href='/stylesheets/style.css' />
+    	<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     
+
+      <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '195030357710243',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{latest-api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+      </script>
+
+
+  		<link rel="shortcut icon" href="">
+
+  		    <h1><%= title %></h1>
+    <p>Bienvenido a la pagina de Vinculacion de Proyectos CONACYT con Colaboracion de Empresas</p>
+
+
+    <br>
+
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  </style>
+</head>
+
+
+
+
+ <body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '195030357710243',
+      xfbml      : true,
+      version    : 'v2.11'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+        <p> facebook </p>
+
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else {
+      // The person is not logged into your app or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '195030357710243',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.8' // use graph api version 2.8
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+</script>
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+
+        <p> aqui</p>
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="http://www.conacyt.gob.mx/pci/images/images/LogoCONACYT_hori.png" alt="Image" style="width:1250px;height:350px;">
+        <div class="carousel-caption">
+        </div>      
+      </div>
+
+      <div class="item">
+        <img src="http://vocesdelperiodista.mx/wp-content/uploads/2017/09/CONACYT.-Foto-Especial-890x395_c.jpg" alt="Image" style="width:1100px;height:350px;">
+        <div class="carousel-caption">
+          <h3>Bienvenido</h3>
+          <p>Consulta tus Proyectos</p>
+        </div>      
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+  
+<div class="container text-center">    
+  <h3>Base de datos para consulta de proyectos y colaboradores de CONACYT</h3><br>
+
+
+ 
+  <div class="row">
+    <div class="col-sm-6" ng-controller="ColaboradoresCtrl">
+    <div>
+	<img src="http://www.generadordeideas.com.mx/proyectos/rotoplas16/img/esp/creacion_valor/icono_relacion_02_colaboradores.png" class="img-responsive" alt="Image"
+	style="width:200px;height:150px;">
+    <button ng-click="getColaboradores()" class="btn btn" >Cargar Lista Colaboradores</button>
+	</div>
+	<input type="text" ng-model="colaborador.nombre" placeholder="insertar nombre" class="form-control">
+    <input type="text" ng-model="colaborador.email" placeholder="insertar email" class="form-control">
+    <input type="text" ng-model="colaborador.categoria" placeholder="insertar categoria" class="form-control">
+    <input type="text" ng-model="colaborador.sitio_web" placeholder="insertar sitio_web" class="form-control">
+    <button ng-click="addColaborador()" class="btn btn" >Agregar Colaborador </button>
+    <button ng-click="updateColaborador(colaborador)" class="btn btn" >Actualizar Info Colaborador</button>
+
+        <div ng-repeat="colaborador in colaboradores" ng-click="showInfo(colaborador)">
+      <br>
+      <p class="list-group-item disabled">Id : <strong>{{colaborador._id}}</strong>
+      <button ng-click="showColaborador(colaborador)" class="btn btn btn-s">Seleccionar</button>
+      <button ng-click="deleteColaborador(colaborador._id)" class="btn btn btn-s">Borrar</button>
+      </p>
+		
+	  <p class="list-group-item">Nombre : <strong>{{colaborador.nombre}}</strong></p>
+      <p class="list-group-item">Email : <strong>{{colaborador.email}}</strong></p>
+      <p class="list-group-item">Categoria : <strong>{{colaborador.categoria}}</strong></p>
+      <p class="list-group-item">Sitio Web : <strong>{{colaborador.sitio_web}}</strong></p>
+   		</div>
+
+      <p>Colaboradores</p>
+    </div>
+
+
+
+    <div class="col-sm-6" ng-model="colaborador.nombre" ng-controller="ProyectosCtrl"> 
+      <img src="http://supremainmobiliaria.com/images/layout/hotlink/proyectos.png" class="img-responsive" alt="Image" style="width:250px;height:100px;">
+        <div class="row"><br><br>
+
+
+    <input type="text" class="form-control"  ng-model="query" placeholder="Buscar" >
+
+    <button ng-click="getProyectos()" class="btn btn" >Cargar Lista Proyectos</button>
+     
+
+	</div>
+	<input type="text" ng-model="proyecto.nombre" placeholder="insertar nombre" class="form-control">
+    <input type="text" ng-model="proyecto.descripcion" placeholder="insertar descripcion" class="form-control">
+    <input type="text" ng-model="proyecto.area_conocimiento" placeholder="insertar area de conocimiento" class="form-control">
+    <input type="text" ng-model="proyecto.fecha_inicio" placeholder="insertar fecha de inicio" class="form-control">
+    <input type="text" ng-model="proyecto.fecha_fin" placeholder="insertar fecha de fin" class="form-control">
+	<input type="text" ng-model="proyecto.presupuesto" placeholder="insertar presupuesto" class="form-control">
+	<input type="text" ng-model="proyecto.colaborador" placeholder="insertar id del colaborador" class="form-control">
+
+    <button ng-click="addProyecto()" class="btn btn" >Agregar Proyecto </button>
+    <button ng-click="updateProyecto(proyecto)" class="btn btn" >Actualizar Info Proyecto</button>
+
+        <div ng-repeat="proyecto in proyectos" ng-click="showInfo(proyecto)">
+      <br>
+      <p class="list-group-item disabled">Id : <strong>{{proyecto._id}}</strong>
+      <button ng-click="showProyecto(proyecto)" class="btn btn btn-s">Seleccionar</button>
+      <button ng-click="deleteProyecto(proyecto._id)" class="btn btn btn-s">Borrar</button>
+      </p>
+		
+	  <p class="list-group-item">Nombre : <strong>{{proyecto.nombre}}</strong></p>
+      <p class="list-group-item">Descripcion : <strong>{{proyecto.descripcion}}</strong></p>
+      <p class="list-group-item">Area de Conocimiento : <strong>{{proyecto.area_conocimiento}}</strong></p>
+      <p class="list-group-item">Fecha Inicio : <strong>{{proyecto.fecha_inicio}}</strong></p>
+   	  <p class="list-group-item">Fecha Fin : <strong>{{proyecto.fecha_fin}}</strong></p>
+   	  <p class="list-group-item">Presupuesto : <strong>{{proyecto.presupuesto}}</strong></p>
+   	  <p class="list-group-item">Colaboradores : <strong>{{proyecto.colaborador.nombre}}</strong></p>	
+   		</div>
+
+      <p>Proyectos</p>    
+    </div>
+  </div>
+</div><br>
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+
+  	<script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/lib/angular/angular.js"></script>
+
+    <script type="text/javascript" src="/js/services/databaseServ.js"></script>
+    <script type="text/javascript" src="/js/controllers/databaseCtrl.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+</footer>
+
+</body>
+</html>
+

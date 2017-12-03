@@ -1,0 +1,24 @@
+{
+  "name": "ProjectsAPI",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Reimonsk8 <Reimonsk8@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/legarcia2904/ProjectsAPI",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.6",
+    "bootstrap": "^3.3.7",
+    "components-font-awesome": "^4.7.0",
+    "angular-route": "^1.6.6",
+    "ngmap": "^1.18.4"
+  }
+}
