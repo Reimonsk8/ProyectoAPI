@@ -20,6 +20,8 @@
     <br>
 
   <style>
+    #fb-btn{margin-top:13px;}
+    #profile,#logout{display:none;}
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -38,31 +40,39 @@
       min-height:200px;
   }
 
+
+
   /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px) {
     .carousel-caption {
       display: none; 
     }
   }
-  </style>
+
+
+<style media="screen">
+
+</style>
+
 </head>
 
 
 
 
  <body>
-
-     <p> facebook </p>
-
-     
 <script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '195030357710243',
+      cookie     : true,
       xfbml      : true,
-      version    : 'v2.11'
+      version    : 'v2.8'
     });
-    FB.AppEvents.logPageView();
+      
+   FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+
   };
 
   (function(d, s, id){
@@ -72,25 +82,70 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+
+
+   function statusChangeCallback(response){
+    if(response.status === 'connected'){
+      console.log('Inicio de Sesion Autentificado');
+      setElements(true);
+      testAPI();
+    }else{
+      console.log('No hay Sesion o No a sido Autentificado');
+      setElements(false);
+
+    }
+  };
+
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response){
+    statusChangeCallback(response);
+  });
+};
+
+function setElements(isLoggedIn){
+if(isLoggedIn){
+    document.getElementById('logout').style.display = 'block';
+    document.getElementById('profile').style.display = 'block';
+    document.getElementById('fb-btn').style.display = 'none';
+   
+} else{
+    document.getElementById('logout').style.display = 'none';
+    document.getElementById('profile').style.display = 'none';
+    document.getElementById('fb-btn').style.display = 'block';
+    }
+};
+
+function logout(){
+  FB.logout(function(response){
+  setElements();
+  });
+
+function testAPI(){
+      FB.api("/me?fields=name,email",function(response){
+        if(response && !response.error){
+          console.log(response);
+        }
+      });
+  };
+
+}
+
 </script>
 
-     
+<div id=profile>profile</div>
+ 
 <div
   class="fb-like"
   data-share="true"
-  data-width="1300"
+  data-width="960"
   data-show-faces="true">
 </div>
-
-
- <p> facebook </p>
-
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-
-
 
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -102,11 +157,14 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">Informacion</a></li>
+        <li><a href="#">Contacto</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><fb:login-button id="fb-btn" scope="public_profile,email,user_birthday" onlogin="checkLoginState();"></fb:login-button></li>
+        <li><a id="logout" href="#" onclick="logout()" ><span class="glyphicon glyphicon-log-in"></span>Cerrar Sesion</a><li>
+
+              
       </ul>
     </div>
   </div>
