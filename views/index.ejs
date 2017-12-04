@@ -4,40 +4,16 @@
 <html lang="es" ng-app="databaseApp">
   <head>
     <title><%= title %></title>
-    	<link rel='stylesheet' href='/stylesheets/style.css' />
-    	<meta charset="utf-8">
-  		<meta name="viewport" content="width=device-width, initial-scale=1">
-  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-      <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '195030357710243',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{latest-api-version}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
+      <link rel="shortcut icon" href="">
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-      </script>
-
-
-  		<link rel="shortcut icon" href="">
-
-  		    <h1><%= title %></h1>
+          <h1><%= title %></h1>
     <p>Bienvenido a la pagina de Vinculacion de Proyectos CONACYT con Colaboracion de Empresas</p>
 
 
@@ -95,96 +71,21 @@
 </script>
 
         <p> facebook </p>
-
-<script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else {
-      // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '195030357710243',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.8' // use graph api version 2.8
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-</script>
 <div
   class="fb-like"
   data-share="true"
-  data-width="450"
+  data-width="1300"
   data-show-faces="true">
 </div>
-
-        <p> aqui</p>
 
 
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
+
+
+
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -240,7 +141,8 @@
     </a>
 </div>
   
-<div class="container text-center">    
+<div class="container text-center">   
+
   <h3>Base de datos para consulta de proyectos y colaboradores de CONACYT</h3><br>
 
 
@@ -248,29 +150,45 @@
   <div class="row">
     <div class="col-sm-6" ng-controller="ColaboradoresCtrl">
     <div>
-	<img src="http://www.generadordeideas.com.mx/proyectos/rotoplas16/img/esp/creacion_valor/icono_relacion_02_colaboradores.png" class="img-responsive" alt="Image"
-	style="width:200px;height:150px;">
-    <button ng-click="getColaboradores()" class="btn btn" >Cargar Lista Colaboradores</button>
-	</div>
-	<input type="text" ng-model="colaborador.nombre" placeholder="insertar nombre" class="form-control">
+  <img src="http://www.generadordeideas.com.mx/proyectos/rotoplas16/img/esp/creacion_valor/icono_relacion_02_colaboradores.png" class="img-responsive" alt="Image"
+  style="width:200px;height:150px;">
+    
+  </div>
+    
+    <table>
+    <tr>
+    <td><span class="glyphicon glyphicon-search"></td>
+    <td><input type="text" ng-model="searchBox1" placeholder="Buscar"  class="form-control"></td>
+    <td><button ng-click="getColaboradores()" class="btn btn" >Desplegar</button></td>
+    <td><button type="button" class="btn" data-toggle="collapse" data-target="#demo">Formulario</button></td>
+    </tr>
+    </table>
+
+    <div id="demo" class="collapse">
+     <input type="text" ng-model="colaborador.nombre" placeholder="insertar nombre" class="form-control">
     <input type="text" ng-model="colaborador.email" placeholder="insertar email" class="form-control">
     <input type="text" ng-model="colaborador.categoria" placeholder="insertar categoria" class="form-control">
     <input type="text" ng-model="colaborador.sitio_web" placeholder="insertar sitio_web" class="form-control">
-    <button ng-click="addColaborador()" class="btn btn" >Agregar Colaborador </button>
-    <button ng-click="updateColaborador(colaborador)" class="btn btn" >Actualizar Info Colaborador</button>
-
-        <div ng-repeat="colaborador in colaboradores" ng-click="showInfo(colaborador)">
+    <table>
+    <tr>
+    <td><button ng-click="addColaborador()" class="btn btn" >Agregar</button></td>
+    <td><button ng-click="updateColaborador(colaborador)" class="btn btn" >Actualizar Info</button></td>
+    </tr>
+    </table>
+    
+  </div>
+        <div ng-repeat="colaborador in colaboradores | filter:searchBox1" ng-click="showInfo(colaborador)">
       <br>
       <p class="list-group-item disabled">Id : <strong>{{colaborador._id}}</strong>
       <button ng-click="showColaborador(colaborador)" class="btn btn btn-s">Seleccionar</button>
       <button ng-click="deleteColaborador(colaborador._id)" class="btn btn btn-s">Borrar</button>
       </p>
-		
-	  <p class="list-group-item">Nombre : <strong>{{colaborador.nombre}}</strong></p>
+    
+      <p class="list-group-item">Nombre : <strong>{{colaborador.nombre}}</strong></p>
       <p class="list-group-item">Email : <strong>{{colaborador.email}}</strong></p>
       <p class="list-group-item">Categoria : <strong>{{colaborador.categoria}}</strong></p>
       <p class="list-group-item">Sitio Web : <strong>{{colaborador.sitio_web}}</strong></p>
-   		</div>
+      </div>
 
       <p>Colaboradores</p>
     </div>
@@ -282,38 +200,46 @@
         <div class="row"><br><br>
 
 
-    <input type="text" class="form-control"  ng-model="query" placeholder="Buscar" >
 
-    <button ng-click="getProyectos()" class="btn btn" >Cargar Lista Proyectos</button>
      
 
-	</div>
-	<input type="text" ng-model="proyecto.nombre" placeholder="insertar nombre" class="form-control">
+  </div>
+    <input type="text" ng-model="proyecto.nombre" placeholder="insertar nombre" class="form-control">
     <input type="text" ng-model="proyecto.descripcion" placeholder="insertar descripcion" class="form-control">
     <input type="text" ng-model="proyecto.area_conocimiento" placeholder="insertar area de conocimiento" class="form-control">
     <input type="text" ng-model="proyecto.fecha_inicio" placeholder="insertar fecha de inicio" class="form-control">
     <input type="text" ng-model="proyecto.fecha_fin" placeholder="insertar fecha de fin" class="form-control">
-	<input type="text" ng-model="proyecto.presupuesto" placeholder="insertar presupuesto" class="form-control">
-	<input type="text" ng-model="proyecto.colaborador" placeholder="insertar id del colaborador" class="form-control">
+    <input type="text" ng-model="proyecto.presupuesto" placeholder="insertar presupuesto" class="form-control">
+    <input type="text" ng-model="proyecto.colaborador" placeholder="insertar id del colaborador" class="form-control">
+    
 
-    <button ng-click="addProyecto()" class="btn btn" >Agregar Proyecto </button>
-    <button ng-click="updateProyecto(proyecto)" class="btn btn" >Actualizar Info Proyecto</button>
+    <h4>Proyectos</h4>
+    <table>
+    <tr>
+    <td><span class="glyphicon glyphicon-search"></td>
+    <td><input type="text" ng-model="searchBox2" placeholder="Buscar"  class="form-control"></td>
+    <td><button ng-click="getProyectos()" class="btn btn" >Cargar</button></td>
+    <td><button ng-click="addProyecto()" class="btn btn" >Agregar</button></td>
+    <td><button ng-click="updateProyecto(proyecto)" class="btn btn" >Actualizar Info </button></td>
+    </tr>
+    </table>
 
-        <div ng-repeat="proyecto in proyectos" ng-click="showInfo(proyecto)">
+
+        <div ng-repeat="proyecto in proyectos | filter:searchBox2" ng-click="showInfo(proyecto)">
       <br>
       <p class="list-group-item disabled">Id : <strong>{{proyecto._id}}</strong>
       <button ng-click="showProyecto(proyecto)" class="btn btn btn-s">Seleccionar</button>
       <button ng-click="deleteProyecto(proyecto._id)" class="btn btn btn-s">Borrar</button>
       </p>
-		
-	  <p class="list-group-item">Nombre : <strong>{{proyecto.nombre}}</strong></p>
+    
+    <p class="list-group-item">Nombre : <strong>{{proyecto.nombre}}</strong></p>
       <p class="list-group-item">Descripcion : <strong>{{proyecto.descripcion}}</strong></p>
       <p class="list-group-item">Area de Conocimiento : <strong>{{proyecto.area_conocimiento}}</strong></p>
       <p class="list-group-item">Fecha Inicio : <strong>{{proyecto.fecha_inicio}}</strong></p>
-   	  <p class="list-group-item">Fecha Fin : <strong>{{proyecto.fecha_fin}}</strong></p>
-   	  <p class="list-group-item">Presupuesto : <strong>{{proyecto.presupuesto}}</strong></p>
-   	  <p class="list-group-item">Colaboradores : <strong>{{proyecto.colaborador.nombre}}</strong></p>	
-   		</div>
+      <p class="list-group-item">Fecha Fin : <strong>{{proyecto.fecha_fin}}</strong></p>
+      <p class="list-group-item">Presupuesto : <strong>{{proyecto.presupuesto}}</strong></p>
+      <p class="list-group-item">Colaboradores : <strong>{{proyecto.colaborador.nombre}}</strong></p> 
+      </div>
 
       <p>Proyectos</p>    
     </div>
@@ -323,7 +249,7 @@
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
 
-  	<script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/lib/angular/angular.js"></script>
 
     <script type="text/javascript" src="/js/services/databaseServ.js"></script>
