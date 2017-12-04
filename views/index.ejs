@@ -104,6 +104,29 @@ function checkLoginState() {
   });
 };
 
+function testAPI(){
+      FB.api('/me?fields=name,email,birthday', function(response){
+        if(response && !response.error){
+          console.log(response);
+          buildProfile(response);
+        }
+      });
+  };
+
+function buildProfile(user){
+  let profile = `
+  <h3>${user.name}</h3>
+  <ul classs="list-group">
+  <li class="list-group-item">ID Usuario: ${user.id}</li>
+  <li class="list-group-item">Correo: ${user.email}</li>
+  <li class="list-group-item">Fecha Nacimiento: ${user.birthday}</li>
+  `;
+
+  document.getElementById("profile").innerHTML = profile;
+}
+
+
+
 function setElements(isLoggedIn){
 if(isLoggedIn){
     document.getElementById('logout').style.display = 'block';
@@ -122,26 +145,20 @@ function logout(){
   setElements();
   });
 
-function testAPI(){
-      FB.api("/me?fields=name,email",function(response){
-        if(response && !response.error){
-          console.log(response);
-        }
-      });
-  };
+
 
 }
 
 </script>
 
-<div id=profile>profile</div>
- 
+<div id="profile"></div>
+ <!--
 <div
   class="fb-like"
   data-share="true"
   data-width="960"
   data-show-faces="true">
-</div>
+</div> -->
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
