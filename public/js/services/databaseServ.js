@@ -6,11 +6,15 @@ angular.module('servicios.database',[])
 			colaboradores : []
 		};
 
+		var lista2 = {
+			todoscolaboradores : []
+		};
+
 		lista.getColaboradores = function(){
 			return $http.get('/colaboradores/')
 							.then(function(res){
 								console.log(res.data);
-								angular.copy(res.data,lista.colaboradores);
+								angular.copy(res.data,lista.colaboradores,lista2.todoscolaboradores);
 							},function(res){
 								console.log("Error: "+res.statusText);
 							});
@@ -82,11 +86,12 @@ angular.module('servicios.database',[])
 		lista.getProyectoById = function(id){
 			return $http.get('/proyectos/'+id)
 							.then(function(res){
-								angular.copy(res.data,lista.proyectos._id);
+								angular.copy(res.data,lista.proyectos);
 							},function(res){
 								console.log("Error: "+res.statusText);
 							});
 		};
+
 
 		lista.deleteProyecto = function(id){
 			return $http.delete('/proyectos/'+id)

@@ -24,4 +24,12 @@ mongo.exe
 // Ejecutar la aplicación
 npm start
 
-// Pagina web
+## Navegar en la Pagina web
+
+Ultimos Cambios:
+
+// Inicie sesion con su cuenta de facebook para poder Agregar, Modificar y Borrar a los Colaboradores y Proyectos en la base de datos, de lo contrario solo podra desplegar los menus para visualizarlos si no se a iniciado sesion alguna. 
+(antes de los cambios no se ocupaba iniciar sesion para tener permiso de modificar y editar datos)
+
+//Para Agregar Colaborador a un proyecto despliege a los colaboradores y en el formulario utilize el menu combobox para esto y agrege o modifique un proyecto
+(antes de los cambios se utilizaban ids lo cual era complciado y poco practico)

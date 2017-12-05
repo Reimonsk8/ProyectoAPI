@@ -115,11 +115,9 @@ function testAPI(){
 
 function buildProfile(user){
   let profile = `
-  <h3>${user.name}</h3>
+  <h3> Usted a Iniciado sesion como: ${user.name}</h3>
   <ul classs="list-group">
-  <li class="list-group-item">ID Usuario: ${user.id}</li>
   <li class="list-group-item">Correo: ${user.email}</li>
-  <li class="list-group-item">Fecha Nacimiento: ${user.birthday}</li>
   `;
 
   document.getElementById("profile").innerHTML = profile;
@@ -131,11 +129,27 @@ function setElements(isLoggedIn){
 if(isLoggedIn){
     document.getElementById('logout').style.display = 'block';
     document.getElementById('profile').style.display = 'block';
+    document.getElementById('agregar1').style.display = 'block';
+    document.getElementById('agregar2').style.display = 'block';
+    document.getElementById('actualizar1').style.display = 'block';
+    document.getElementById('actualizar2').style.display = 'block';
+    document.getElementById('formulario1').style.display = 'block';
+    document.getElementById('formulario2').style.display = 'block';
+    document.getElementById('borrar1').style.display = 'block';
+    document.getElementById('borrar2').style.display = 'block';
     document.getElementById('fb-btn').style.display = 'none';
    
 } else{
     document.getElementById('logout').style.display = 'none';
     document.getElementById('profile').style.display = 'none';
+    document.getElementById('agregar1').style.display = 'none';
+    document.getElementById('agregar2').style.display = 'none';
+    document.getElementById('actualizar1').style.display = 'none';
+    document.getElementById('actualizar2').style.display = 'none';
+    document.getElementById('formulario1').style.display = 'none';
+    document.getElementById('formulario2').style.display = 'none';
+    document.getElementById('borrar1').style.display = 'none';
+    document.getElementById('borrar2').style.display = 'none';
     document.getElementById('fb-btn').style.display = 'block';
     }
 };
@@ -241,7 +255,7 @@ function logout(){
     <td><span class="glyphicon glyphicon-search"></td>
     <td><input type="text" ng-model="searchBox1" placeholder="Buscar"  class="form-control"></td>
     <td><button ng-click="getColaboradores()" class="btn btn" >Desplegar</button></td>
-    <td><button type="button" class="btn" data-toggle="collapse" data-target="#demo">Formulario</button></td>
+    <td><button id="formulario1" type="button" class="btn" data-toggle="collapse" data-target="#demo">Formulario</button></td>
     </tr>
     </table>
 
@@ -252,20 +266,19 @@ function logout(){
     <input type="text" ng-model="colaborador.sitio_web" placeholder="insertar sitio_web" class="form-control">
     <table>
     <tr>
-    <td><button ng-click="addColaborador()" class="btn btn" >Agregar</button></td>
-    <td><button ng-click="updateColaborador(colaborador)" class="btn btn" >Actualizar Info</button></td>
+    <td><button id="agregar1" ng-click="addColaborador()" class="btn btn" >Agregar</button></td>
+    <td><button id="actualizar1" ng-click="updateColaborador(colaborador)" class="btn btn" >Actualizar Info</button></td>
     </tr>
     </table>
     
   </div>
         <div ng-repeat="colaborador in colaboradores | filter:searchBox1" ng-click="showInfo(colaborador)">
       <br>
-      <p class="list-group-item disabled">Id : <strong>{{colaborador._id}}</strong>
-      <button ng-click="showColaborador(colaborador)" class="btn btn btn-s" data-toggle="collapse" data-target="#demo">Seleccionar</button>
-      <button ng-click="deleteColaborador(colaborador._id)" class="btn btn btn-s">Borrar</button>
+      <p class="list-group-item disabled"><strong>{{colaborador.nombre}}</strong>
+      <button ng-click="showColaborador(colaborador)" class="btn btn btn-xs" data-toggle="collapse" data-target="#demo">Seleccionar</button>
+      <button id="borrar1" ng-click="deleteColaborador(colaborador._id)" class="btn btn btn-xs">Borrar</button>
       </p>
-    
-      <p class="list-group-item">Nombre : <strong>{{colaborador.nombre}}</strong></p>
+
       <p class="list-group-item">Email : <strong>{{colaborador.email}}</strong></p>
       <p class="list-group-item">Categoria : <strong>{{colaborador.categoria}}</strong></p>
       <p class="list-group-item">Sitio Web : <strong>{{colaborador.sitio_web}}</strong></p>
@@ -276,7 +289,7 @@ function logout(){
 
 
 
-    <div class="col-sm-6" ng-model="colaborador.nombre" ng-controller="ProyectosCtrl"> 
+    <div class="col-sm-6" ng-controller="ProyectosCtrl"> 
       <img src="http://supremainmobiliaria.com/images/layout/hotlink/proyectos.png" class="img-responsive" alt="Image" style="width:250px;height:100px;">
         <div class="row"><br><br>
 
@@ -292,22 +305,29 @@ function logout(){
     <td><span class="glyphicon glyphicon-search"></td>
     <td><input type="text" ng-model="searchBox2" placeholder="Buscar"  class="form-control"></td>
     <td><button ng-click="getProyectos()" class="btn btn" >Desplegar</button></td>
-    <td><button type="button" class="btn" data-toggle="collapse" data-target="#demo2">Formulario</button></td>
+    <td><button id="formulario2" type="button" class="btn" data-toggle="collapse" data-target="#demo2">Formulario</button></td>
     </tr>
     </table>
 
  <div id="demo2" class="collapse">
+
+   <div ng-controller="ColaboradoresCtrl">
+              <select class="form-control" ng-model="proyecto.colaborador" ng-options="colaborador._id as colaborador.nombre for colaborador in colaboradores track by colaborador.nombre">
+
+              </select>
+    </div>
+
     <input type="text" ng-model="proyecto.nombre" placeholder="insertar nombre" class="form-control">
     <input type="text" ng-model="proyecto.descripcion" placeholder="insertar descripcion" class="form-control">
     <input type="text" ng-model="proyecto.area_conocimiento" placeholder="insertar area de conocimiento" class="form-control">
     <input type="text" ng-model="proyecto.fecha_inicio" placeholder="insertar fecha de inicio" class="form-control">
     <input type="text" ng-model="proyecto.fecha_fin" placeholder="insertar fecha de fin" class="form-control">
-    <input type="text" ng-model="proyecto.presupuesto" placeholder="insertar presupuesto" class="form-control">
-    <input type="text" ng-model="proyecto.colaborador" placeholder="insertar id del colaborador" class="form-control">
+    <input type="text" ng-model="proyecto.presupuesto" placeholder="insertar presupuesto" class="form-control"> 
+
     <table>
     <tr>
-    <td><button ng-click="addProyecto()" class="btn btn" >Agregar</button></td>
-    <td><button ng-click="updateProyecto(proyecto)" class="btn btn" >Actualizar Info</button></td>
+    <td><button id="agregar2" ng-click="addProyecto()" class="btn btn" >Agregar</button></td>
+    <td><button id="actualizar2" ng-click="updateProyecto(proyecto)" class="btn btn" >Actualizar Info</button></td>
     </tr>
     </table>
   </div>
@@ -319,11 +339,10 @@ function logout(){
 
       <div ng-repeat="proyecto in proyectos | filter:searchBox2" ng-click="showInfo(proyecto)">
       <br>
-      <p class="list-group-item disabled">Id : <strong>{{proyecto._id}}</strong>
-      <button ng-click="showProyecto(proyecto)" class="btn btn btn-s" data-toggle="collapse" data-target="#demo2">Seleccionar</button>
-      <button ng-click="deleteProyecto(proyecto._id)" class="btn btn btn-s">Borrar</button>
+      <p class="list-group-item disabled"><strong>{{proyecto.nombre}}</strong>
+      <button ng-click="showProyecto(proyecto)" class="btn btn btn-xs" data-toggle="collapse" data-target="#demo2">Seleccionar</button>
+      <button id="borrar2" ng-click="deleteProyecto(proyecto._id)" class="btn btn btn-xs">Borrar</button>
       </p>
-      <p class="list-group-item">Nombre : <strong>{{proyecto.nombre}}</strong></p>
       <p class="list-group-item">Descripcion : <strong>{{proyecto.descripcion}}</strong></p>
       <p class="list-group-item">Area de Conocimiento : <strong>{{proyecto.area_conocimiento}}</strong></p>
       <p class="list-group-item">Fecha Inicio : <strong>{{proyecto.fecha_inicio}}</strong></p>

@@ -40,8 +40,8 @@ function ColaboradoresCtrl($scope,$http,Colaborador){
 
 function ProyectosCtrl($scope,$http,Proyecto){
 
+	
 	$scope.proyecto = {};
-
 	$scope.proyectos = Proyecto.proyectos;
 
 	$scope.getProyectos = function(){
